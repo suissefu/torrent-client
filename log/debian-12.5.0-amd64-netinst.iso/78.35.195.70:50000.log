@@ -1,0 +1,72 @@
+[DEBUG] attempt to read piece blocks from 78.35.195.70:50000 2024-06-17 15:43:21
+[INFO] piece #8 begin 0,end 16383 2024-06-17 15:43:30
+[DEBUG] to 78.35.195.70:50000 ,piece status 6.25% 2024-06-17 15:43:30
+[DEBUG] attempt to read piece blocks from 78.35.195.70:50000 2024-06-17 15:43:30
+[INFO] piece #8 begin 16384,end 32767 2024-06-17 15:43:41
+[DEBUG] to 78.35.195.70:50000 ,piece status 12.50% 2024-06-17 15:43:41
+[DEBUG] attempt to read piece blocks from 78.35.195.70:50000 2024-06-17 15:43:41
+[INFO] piece #8 begin 32768,end 49151 2024-06-17 15:43:45
+[DEBUG] to 78.35.195.70:50000 ,piece status 18.75% 2024-06-17 15:43:45
+[DEBUG] attempt to read piece blocks from 78.35.195.70:50000 2024-06-17 15:43:45
+[INFO] piece #8 begin 49152,end 65535 2024-06-17 15:43:48
+[DEBUG] to 78.35.195.70:50000 ,piece status 25.00% 2024-06-17 15:43:48
+[DEBUG] attempt to read piece blocks from 78.35.195.70:50000 2024-06-17 15:43:48
+[INFO] piece #8 begin 65536,end 81919 2024-06-17 15:43:51
+[DEBUG] to 78.35.195.70:50000 ,piece status 31.25% 2024-06-17 15:43:51
+[DEBUG] attempt to read piece blocks from 78.35.195.70:50000 2024-06-17 15:43:51
+[INFO] piece #8 begin 81920,end 98303 2024-06-17 15:43:55
+[DEBUG] to 78.35.195.70:50000 ,piece status 37.50% 2024-06-17 15:43:55
+[DEBUG] attempt to read piece blocks from 78.35.195.70:50000 2024-06-17 15:43:55
+[INFO] piece #8 begin 98304,end 114687 2024-06-17 15:43:58
+[DEBUG] to 78.35.195.70:50000 ,piece status 43.75% 2024-06-17 15:43:58
+[DEBUG] attempt to read piece blocks from 78.35.195.70:50000 2024-06-17 15:43:58
+[INFO] piece #8 begin 114688,end 131071 2024-06-17 15:44:00
+[DEBUG] to 78.35.195.70:50000 ,piece status 50.00% 2024-06-17 15:44:00
+[DEBUG] attempt to read piece blocks from 78.35.195.70:50000 2024-06-17 15:44:00
+[INFO] piece #8 begin 131072,end 147455 2024-06-17 15:44:04
+[DEBUG] to 78.35.195.70:50000 ,piece status 56.25% 2024-06-17 15:44:04
+[DEBUG] attempt to read piece blocks from 78.35.195.70:50000 2024-06-17 15:44:04
+[INFO] piece #8 begin 147456,end 163839 2024-06-17 15:44:06
+[DEBUG] to 78.35.195.70:50000 ,piece status 62.50% 2024-06-17 15:44:06
+[DEBUG] attempt to read piece blocks from 78.35.195.70:50000 2024-06-17 15:44:06
+[INFO] piece #8 begin 163840,end 180223 2024-06-17 15:44:08
+[DEBUG] to 78.35.195.70:50000 ,piece status 68.75% 2024-06-17 15:44:08
+[DEBUG] attempt to read piece blocks from 78.35.195.70:50000 2024-06-17 15:44:08
+[INFO] piece #8 begin 180224,end 196607 2024-06-17 15:44:12
+[DEBUG] to 78.35.195.70:50000 ,piece status 75.00% 2024-06-17 15:44:12
+[DEBUG] attempt to read piece blocks from 78.35.195.70:50000 2024-06-17 15:44:12
+[INFO] piece #8 begin 196608,end 212991 2024-06-17 15:44:14
+[DEBUG] to 78.35.195.70:50000 ,piece status 81.25% 2024-06-17 15:44:14
+[DEBUG] attempt to read piece blocks from 78.35.195.70:50000 2024-06-17 15:44:14
+[INFO] piece #8 begin 212992,end 229375 2024-06-17 15:44:16
+[DEBUG] to 78.35.195.70:50000 ,piece status 87.50% 2024-06-17 15:44:16
+[DEBUG] attempt to read piece blocks from 78.35.195.70:50000 2024-06-17 15:44:16
+[INFO] piece #8 begin 229376,end 245759 2024-06-17 15:44:18
+[DEBUG] to 78.35.195.70:50000 ,piece status 93.75% 2024-06-17 15:44:18
+[DEBUG] attempt to read piece blocks from 78.35.195.70:50000 2024-06-17 15:44:18
+[INFO] piece #8 begin 245760,end 262143 2024-06-17 15:44:21
+[DEBUG] to 78.35.195.70:50000 ,piece status 100.00% 2024-06-17 15:44:21
+[INFO] Piece #8 download success 2024-06-17 15:44:21
+[DEBUG] attempt to read piece blocks from 78.35.195.70:50000 2024-06-17 15:44:21
+[INFO] piece #33 begin 0,end 16383 2024-06-17 15:44:25
+[DEBUG] to 78.35.195.70:50000 ,piece status 6.25% 2024-06-17 15:44:25
+[DEBUG] attempt to read piece blocks from 78.35.195.70:50000 2024-06-17 15:44:25
+[INFO] piece #33 begin 16384,end 32767 2024-06-17 15:44:28
+[DEBUG] to 78.35.195.70:50000 ,piece status 12.50% 2024-06-17 15:44:28
+[DEBUG] attempt to read piece blocks from 78.35.195.70:50000 2024-06-17 15:44:28
+[INFO] piece #33 begin 32768,end 49151 2024-06-17 15:44:32
+[DEBUG] to 78.35.195.70:50000 ,piece status 18.75% 2024-06-17 15:44:32
+[DEBUG] attempt to read piece blocks from 78.35.195.70:50000 2024-06-17 15:44:32
+[INFO] piece #33 begin 49152,end 65535 2024-06-17 15:44:34
+[DEBUG] to 78.35.195.70:50000 ,piece status 25.00% 2024-06-17 15:44:34
+[DEBUG] attempt to read piece blocks from 78.35.195.70:50000 2024-06-17 15:44:34
+[INFO] piece #33 begin 65536,end 81919 2024-06-17 15:44:37
+[DEBUG] to 78.35.195.70:50000 ,piece status 31.25% 2024-06-17 15:44:37
+[DEBUG] attempt to read piece blocks from 78.35.195.70:50000 2024-06-17 15:44:37
+[INFO] piece #33 begin 81920,end 98303 2024-06-17 15:44:39
+[DEBUG] to 78.35.195.70:50000 ,piece status 37.50% 2024-06-17 15:44:39
+[DEBUG] attempt to read piece blocks from 78.35.195.70:50000 2024-06-17 15:44:39
+[INFO] piece #33 begin 98304,end 109348 2024-06-17 15:44:52
+[DEBUG] to 78.35.195.70:50000 ,piece status 41.71% 2024-06-17 15:44:52
+[DEBUG] attempt to read piece blocks from 78.35.195.70:50000 2024-06-17 15:44:52
+[ERROR] client exit ,when trying to download Piece #33  :timed out 2024-06-17 15:45:16

@@ -1,0 +1,160 @@
+[INFO] request url: http://bttracker.debian.org:6969/announce?info_hash=%2Bf%98%00%93%BC%11%80o%ABP%CB%3C%B4%185%B9Z%03b&peer_id=-TR4050-iSCho2H%23OG9Z&port=51639&uploaded=0&downloaded=0&compact=1&left=659554304 2024-06-17 15:43:13
+[INFO] 200 2024-06-17 15:43:13
+[DEBUG] http://bttracker.debian.org:6969/announce?info_hash=%2Bf%98%00%93%BC%11%80o%ABP%CB%3C%B4%185%B9Z%03b&peer_id=-TR4050-iSCho2H%23OG9Z&port=51639&uploaded=0&downloaded=0&compact=1&left=659554304 2024-06-17 15:43:13
+[INFO] try to test peers' availability 2024-06-17 15:43:13
+[DEBUG] start clients filtering 2024-06-17 15:43:13
+[ERROR] when testing the peer's availability ,an error "[Errno 111] Connection refused" occurred,traceback line 83 2024-06-17 15:43:13
+[ERROR] when testing the peer's availability ,an error "[Errno 111] Connection refused" occurred,traceback line 83 2024-06-17 15:43:13
+[ERROR] when testing the peer's availability ,an error "[Errno 111] Connection refused" occurred,traceback line 83 2024-06-17 15:43:13
+[ERROR] when testing the peer's availability ,an error "[Errno 111] Connection refused" occurred,traceback line 83 2024-06-17 15:43:14
+[ERROR] when testing the peer's availability ,an error "[Errno 111] Connection refused" occurred,traceback line 83 2024-06-17 15:43:16
+[ERROR] when testing the peer's availability ,an error "timed out" occurred,traceback line 83 2024-06-17 15:43:28
+[ERROR] when testing the peer's availability ,an error "timed out" occurred,traceback line 83 2024-06-17 15:43:28
+[ERROR] when testing the peer's availability ,an error "timed out" occurred,traceback line 83 2024-06-17 15:43:28
+[ERROR] when testing the peer's availability ,an error "timed out" occurred,traceback line 83 2024-06-17 15:43:28
+[ERROR] when testing the peer's availability ,an error "timed out" occurred,traceback line 83 2024-06-17 15:43:28
+[ERROR] when testing the peer's availability ,an error "timed out" occurred,traceback line 83 2024-06-17 15:43:28
+[ERROR] when testing the peer's availability ,an error "timed out" occurred,traceback line 83 2024-06-17 15:43:28
+[ERROR] when testing the peer's availability ,an error "timed out" occurred,traceback line 83 2024-06-17 15:43:28
+[ERROR] when testing the peer's availability ,an error "timed out" occurred,traceback line 83 2024-06-17 15:43:28
+[ERROR] when testing the peer's availability ,an error "timed out" occurred,traceback line 83 2024-06-17 15:43:28
+[ERROR] when testing the peer's availability ,an error "timed out" occurred,traceback line 83 2024-06-17 15:43:28
+[ERROR] when testing the peer's availability ,an error "timed out" occurred,traceback line 83 2024-06-17 15:43:28
+[ERROR] when testing the peer's availability ,an error "timed out" occurred,traceback line 83 2024-06-17 15:43:28
+[ERROR] when testing the peer's availability ,an error "timed out" occurred,traceback line 83 2024-06-17 15:43:28
+[ERROR] when testing the peer's availability ,an error "timed out" occurred,traceback line 83 2024-06-17 15:43:28
+[ERROR] when testing the peer's availability ,an error "timed out" occurred,traceback line 83 2024-06-17 15:43:28
+[DEBUG] start clients filtering 2024-06-17 15:43:28
+[INFO] client id :218.225.156.222:59153,client :<Client(Thread-45, started 131724138759744)>,client status: True 2024-06-17 15:43:28
+[INFO] client id :116.233.91.0:53587,client :<Client(Thread-44, started 131724130367040)>,client status: True 2024-06-17 15:43:28
+[INFO] client id :82.65.112.214:10995,client :<Client(Thread-46, started 131725766157888)>,client status: True 2024-06-17 15:43:28
+[INFO] client id :108.201.79.41:58762,client :<Client(Thread-47, started 131726269457984)>,client status: True 2024-06-17 15:43:28
+[INFO] client id :109.230.59.3:51413,client :<Client(Thread-48, started 131726873437760)>,client status: True 2024-06-17 15:43:28
+[INFO] client id :75.221.87.64:57737,client :<Client(Thread-52, started 131727275349568)>,client status: True 2024-06-17 15:43:28
+[INFO] client id :169.150.254.167:52182,client :<Client(Thread-49, started 131725212501568)>,client status: True 2024-06-17 15:43:28
+[INFO] client id :78.35.195.70:50000,client :<Client(Thread-51, started 131724675630656)>,client status: True 2024-06-17 15:43:28
+[INFO] client id :96.37.26.100:51413,client :<Client(Thread-54, started 131726261065280)>,client status: True 2024-06-17 15:43:28
+[INFO] client id :134.19.179.211:64273,client :<Client(Thread-53, started 131726865045056)>,client status: True 2024-06-17 15:43:28
+[INFO] client id :176.147.175.149:41256,client :<Client(Thread-55, started 131726286243392)>,client status: True 2024-06-17 15:43:28
+[INFO] client id :185.156.175.43:35205,client :<Client(Thread-56, started 131725237679680)>,client status: True 2024-06-17 15:43:28
+[INFO] client id :188.156.97.37:60000,client :<Client(Thread-58, started 131726294636096)>,client status: True 2024-06-17 15:43:28
+[INFO] client id :141.239.219.163:6881,client :<Client(Thread-59, started 131724667237952)>,client status: True 2024-06-17 15:43:28
+[INFO] client id :81.2.80.53:51413,client :<Client(Thread-61, started 131725774550592)>,client status: True 2024-06-17 15:43:28
+[INFO] client id :188.173.188.73:40132,client :<Client(Thread-60, started 131724684023360)>,client status: True 2024-06-17 15:43:28
+[INFO] client id :184.75.223.235:16310,client :<Client(Thread-62, started 131725724194368)>,client status: True 2024-06-17 15:43:28
+[INFO] client id :37.48.93.129:51850,client :<Client(Thread-63, started 131726881830464)>,client status: True 2024-06-17 15:43:28
+[INFO] client id :86.248.243.65:51413,client :<Client(Thread-64, started 131725187323456)>,client status: True 2024-06-17 15:43:28
+[DEBUG] start clients filtering 2024-06-17 15:43:43
+[INFO] client id :218.225.156.222:59153,client :<Client(Thread-45, started 131724138759744)>,client status: True 2024-06-17 15:43:43
+[INFO] client id :116.233.91.0:53587,client :<Client(Thread-44, started 131724130367040)>,client status: True 2024-06-17 15:43:43
+[INFO] client id :82.65.112.214:10995,client :<Client(Thread-46, started 131725766157888)>,client status: True 2024-06-17 15:43:43
+[INFO] client id :108.201.79.41:58762,client :<Client(Thread-47, started 131726269457984)>,client status: True 2024-06-17 15:43:43
+[INFO] client id :109.230.59.3:51413,client :<Client(Thread-48, started 131726873437760)>,client status: True 2024-06-17 15:43:43
+[INFO] client id :75.221.87.64:57737,client :<Client(Thread-52, started 131727275349568)>,client status: True 2024-06-17 15:43:43
+[INFO] client id :169.150.254.167:52182,client :<Client(Thread-49, started 131725212501568)>,client status: True 2024-06-17 15:43:43
+[INFO] client id :78.35.195.70:50000,client :<Client(Thread-51, started 131724675630656)>,client status: True 2024-06-17 15:43:43
+[INFO] client id :96.37.26.100:51413,client :<Client(Thread-54, started 131726261065280)>,client status: True 2024-06-17 15:43:43
+[INFO] client id :134.19.179.211:64273,client :<Client(Thread-53, started 131726865045056)>,client status: True 2024-06-17 15:43:43
+[INFO] client id :176.147.175.149:41256,client :<Client(Thread-55, started 131726286243392)>,client status: True 2024-06-17 15:43:43
+[INFO] client id :188.156.97.37:60000,client :<Client(Thread-58, started 131726294636096)>,client status: True 2024-06-17 15:43:43
+[INFO] client id :141.239.219.163:6881,client :<Client(Thread-59, started 131724667237952)>,client status: True 2024-06-17 15:43:43
+[INFO] client id :188.173.188.73:40132,client :<Client(Thread-60, started 131724684023360)>,client status: True 2024-06-17 15:43:43
+[INFO] client id :184.75.223.235:16310,client :<Client(Thread-62, started 131725724194368)>,client status: True 2024-06-17 15:43:43
+[INFO] client id :37.48.93.129:51850,client :<Client(Thread-63, started 131726881830464)>,client status: True 2024-06-17 15:43:43
+[DEBUG] start clients filtering 2024-06-17 15:43:58
+[INFO] client id :218.225.156.222:59153,client :<Client(Thread-45, started 131724138759744)>,client status: True 2024-06-17 15:43:58
+[INFO] client id :116.233.91.0:53587,client :<Client(Thread-44, started 131724130367040)>,client status: True 2024-06-17 15:43:58
+[INFO] client id :82.65.112.214:10995,client :<Client(Thread-46, started 131725766157888)>,client status: True 2024-06-17 15:43:58
+[INFO] client id :108.201.79.41:58762,client :<Client(Thread-47, started 131726269457984)>,client status: True 2024-06-17 15:43:58
+[INFO] client id :109.230.59.3:51413,client :<Client(Thread-48, started 131726873437760)>,client status: True 2024-06-17 15:43:58
+[INFO] client id :75.221.87.64:57737,client :<Client(Thread-52, started 131727275349568)>,client status: True 2024-06-17 15:43:58
+[INFO] client id :169.150.254.167:52182,client :<Client(Thread-49, started 131725212501568)>,client status: True 2024-06-17 15:43:58
+[INFO] client id :78.35.195.70:50000,client :<Client(Thread-51, started 131724675630656)>,client status: True 2024-06-17 15:43:58
+[INFO] client id :96.37.26.100:51413,client :<Client(Thread-54, started 131726261065280)>,client status: True 2024-06-17 15:43:58
+[INFO] client id :134.19.179.211:64273,client :<Client(Thread-53, started 131726865045056)>,client status: True 2024-06-17 15:43:58
+[INFO] client id :176.147.175.149:41256,client :<Client(Thread-55, started 131726286243392)>,client status: True 2024-06-17 15:43:58
+[INFO] client id :188.156.97.37:60000,client :<Client(Thread-58, started 131726294636096)>,client status: True 2024-06-17 15:43:58
+[INFO] client id :188.173.188.73:40132,client :<Client(Thread-60, started 131724684023360)>,client status: True 2024-06-17 15:43:58
+[INFO] client id :184.75.223.235:16310,client :<Client(Thread-62, started 131725724194368)>,client status: True 2024-06-17 15:43:58
+[INFO] client id :37.48.93.129:51850,client :<Client(Thread-63, started 131726881830464)>,client status: True 2024-06-17 15:43:58
+[DEBUG] start clients filtering 2024-06-17 15:44:13
+[INFO] client id :218.225.156.222:59153,client :<Client(Thread-45, started 131724138759744)>,client status: True 2024-06-17 15:44:13
+[INFO] client id :116.233.91.0:53587,client :<Client(Thread-44, started 131724130367040)>,client status: True 2024-06-17 15:44:13
+[INFO] client id :82.65.112.214:10995,client :<Client(Thread-46, started 131725766157888)>,client status: True 2024-06-17 15:44:13
+[INFO] client id :108.201.79.41:58762,client :<Client(Thread-47, started 131726269457984)>,client status: True 2024-06-17 15:44:13
+[INFO] client id :109.230.59.3:51413,client :<Client(Thread-48, started 131726873437760)>,client status: True 2024-06-17 15:44:13
+[INFO] client id :75.221.87.64:57737,client :<Client(Thread-52, started 131727275349568)>,client status: True 2024-06-17 15:44:13
+[INFO] client id :169.150.254.167:52182,client :<Client(Thread-49, started 131725212501568)>,client status: True 2024-06-17 15:44:13
+[INFO] client id :78.35.195.70:50000,client :<Client(Thread-51, started 131724675630656)>,client status: True 2024-06-17 15:44:13
+[INFO] client id :96.37.26.100:51413,client :<Client(Thread-54, started 131726261065280)>,client status: True 2024-06-17 15:44:13
+[INFO] client id :134.19.179.211:64273,client :<Client(Thread-53, started 131726865045056)>,client status: True 2024-06-17 15:44:13
+[INFO] client id :176.147.175.149:41256,client :<Client(Thread-55, started 131726286243392)>,client status: True 2024-06-17 15:44:13
+[INFO] client id :188.156.97.37:60000,client :<Client(Thread-58, started 131726294636096)>,client status: True 2024-06-17 15:44:13
+[INFO] client id :184.75.223.235:16310,client :<Client(Thread-62, started 131725724194368)>,client status: True 2024-06-17 15:44:13
+[INFO] client id :37.48.93.129:51850,client :<Client(Thread-63, started 131726881830464)>,client status: True 2024-06-17 15:44:13
+[DEBUG] start clients filtering 2024-06-17 15:44:28
+[INFO] client id :218.225.156.222:59153,client :<Client(Thread-45, started 131724138759744)>,client status: True 2024-06-17 15:44:28
+[INFO] client id :116.233.91.0:53587,client :<Client(Thread-44, started 131724130367040)>,client status: True 2024-06-17 15:44:28
+[INFO] client id :82.65.112.214:10995,client :<Client(Thread-46, started 131725766157888)>,client status: True 2024-06-17 15:44:28
+[INFO] client id :108.201.79.41:58762,client :<Client(Thread-47, started 131726269457984)>,client status: True 2024-06-17 15:44:28
+[INFO] client id :109.230.59.3:51413,client :<Client(Thread-48, started 131726873437760)>,client status: True 2024-06-17 15:44:28
+[INFO] client id :169.150.254.167:52182,client :<Client(Thread-49, started 131725212501568)>,client status: True 2024-06-17 15:44:28
+[INFO] client id :78.35.195.70:50000,client :<Client(Thread-51, started 131724675630656)>,client status: True 2024-06-17 15:44:28
+[INFO] client id :96.37.26.100:51413,client :<Client(Thread-54, started 131726261065280)>,client status: True 2024-06-17 15:44:28
+[INFO] client id :134.19.179.211:64273,client :<Client(Thread-53, started 131726865045056)>,client status: True 2024-06-17 15:44:28
+[INFO] client id :176.147.175.149:41256,client :<Client(Thread-55, started 131726286243392)>,client status: True 2024-06-17 15:44:28
+[INFO] client id :188.156.97.37:60000,client :<Client(Thread-58, started 131726294636096)>,client status: True 2024-06-17 15:44:28
+[INFO] client id :184.75.223.235:16310,client :<Client(Thread-62, started 131725724194368)>,client status: True 2024-06-17 15:44:28
+[DEBUG] start clients filtering 2024-06-17 15:44:43
+[INFO] client id :218.225.156.222:59153,client :<Client(Thread-45, started 131724138759744)>,client status: True 2024-06-17 15:44:43
+[INFO] client id :116.233.91.0:53587,client :<Client(Thread-44, started 131724130367040)>,client status: True 2024-06-17 15:44:43
+[INFO] client id :82.65.112.214:10995,client :<Client(Thread-46, started 131725766157888)>,client status: True 2024-06-17 15:44:43
+[INFO] client id :108.201.79.41:58762,client :<Client(Thread-47, started 131726269457984)>,client status: True 2024-06-17 15:44:43
+[INFO] client id :109.230.59.3:51413,client :<Client(Thread-48, started 131726873437760)>,client status: True 2024-06-17 15:44:43
+[INFO] client id :169.150.254.167:52182,client :<Client(Thread-49, started 131725212501568)>,client status: True 2024-06-17 15:44:43
+[INFO] client id :78.35.195.70:50000,client :<Client(Thread-51, started 131724675630656)>,client status: True 2024-06-17 15:44:43
+[INFO] client id :96.37.26.100:51413,client :<Client(Thread-54, started 131726261065280)>,client status: True 2024-06-17 15:44:43
+[INFO] client id :134.19.179.211:64273,client :<Client(Thread-53, started 131726865045056)>,client status: True 2024-06-17 15:44:43
+[INFO] client id :176.147.175.149:41256,client :<Client(Thread-55, started 131726286243392)>,client status: True 2024-06-17 15:44:43
+[INFO] client id :188.156.97.37:60000,client :<Client(Thread-58, started 131726294636096)>,client status: True 2024-06-17 15:44:43
+[INFO] client id :184.75.223.235:16310,client :<Client(Thread-62, started 131725724194368)>,client status: True 2024-06-17 15:44:43
+[DEBUG] start clients filtering 2024-06-17 15:44:58
+[INFO] client id :218.225.156.222:59153,client :<Client(Thread-45, started 131724138759744)>,client status: True 2024-06-17 15:44:58
+[INFO] client id :116.233.91.0:53587,client :<Client(Thread-44, started 131724130367040)>,client status: True 2024-06-17 15:44:58
+[INFO] client id :82.65.112.214:10995,client :<Client(Thread-46, started 131725766157888)>,client status: True 2024-06-17 15:44:58
+[INFO] client id :108.201.79.41:58762,client :<Client(Thread-47, started 131726269457984)>,client status: True 2024-06-17 15:44:58
+[INFO] client id :109.230.59.3:51413,client :<Client(Thread-48, started 131726873437760)>,client status: True 2024-06-17 15:44:58
+[INFO] client id :169.150.254.167:52182,client :<Client(Thread-49, started 131725212501568)>,client status: True 2024-06-17 15:44:58
+[INFO] client id :78.35.195.70:50000,client :<Client(Thread-51, started 131724675630656)>,client status: True 2024-06-17 15:44:58
+[INFO] client id :96.37.26.100:51413,client :<Client(Thread-54, started 131726261065280)>,client status: True 2024-06-17 15:44:58
+[INFO] client id :134.19.179.211:64273,client :<Client(Thread-53, started 131726865045056)>,client status: True 2024-06-17 15:44:58
+[INFO] client id :176.147.175.149:41256,client :<Client(Thread-55, started 131726286243392)>,client status: True 2024-06-17 15:44:58
+[INFO] client id :188.156.97.37:60000,client :<Client(Thread-58, started 131726294636096)>,client status: True 2024-06-17 15:44:58
+[INFO] client id :184.75.223.235:16310,client :<Client(Thread-62, started 131725724194368)>,client status: True 2024-06-17 15:44:58
+[DEBUG] start clients filtering 2024-06-17 15:45:13
+[INFO] client id :218.225.156.222:59153,client :<Client(Thread-45, started 131724138759744)>,client status: True 2024-06-17 15:45:13
+[INFO] client id :116.233.91.0:53587,client :<Client(Thread-44, started 131724130367040)>,client status: True 2024-06-17 15:45:13
+[INFO] client id :82.65.112.214:10995,client :<Client(Thread-46, started 131725766157888)>,client status: True 2024-06-17 15:45:13
+[INFO] client id :108.201.79.41:58762,client :<Client(Thread-47, started 131726269457984)>,client status: True 2024-06-17 15:45:13
+[INFO] client id :109.230.59.3:51413,client :<Client(Thread-48, started 131726873437760)>,client status: True 2024-06-17 15:45:13
+[INFO] client id :169.150.254.167:52182,client :<Client(Thread-49, started 131725212501568)>,client status: True 2024-06-17 15:45:13
+[INFO] client id :78.35.195.70:50000,client :<Client(Thread-51, started 131724675630656)>,client status: True 2024-06-17 15:45:13
+[INFO] client id :96.37.26.100:51413,client :<Client(Thread-54, started 131726261065280)>,client status: True 2024-06-17 15:45:13
+[INFO] client id :134.19.179.211:64273,client :<Client(Thread-53, started 131726865045056)>,client status: True 2024-06-17 15:45:13
+[INFO] client id :176.147.175.149:41256,client :<Client(Thread-55, started 131726286243392)>,client status: True 2024-06-17 15:45:13
+[INFO] client id :188.156.97.37:60000,client :<Client(Thread-58, started 131726294636096)>,client status: True 2024-06-17 15:45:13
+[INFO] client id :184.75.223.235:16310,client :<Client(Thread-62, started 131725724194368)>,client status: True 2024-06-17 15:45:13
+[DEBUG] start clients filtering 2024-06-17 15:45:28
+[INFO] client id :218.225.156.222:59153,client :<Client(Thread-45, started 131724138759744)>,client status: True 2024-06-17 15:45:28
+[INFO] client id :82.65.112.214:10995,client :<Client(Thread-46, started 131725766157888)>,client status: True 2024-06-17 15:45:28
+[INFO] client id :109.230.59.3:51413,client :<Client(Thread-48, started 131726873437760)>,client status: True 2024-06-17 15:45:28
+[INFO] client id :169.150.254.167:52182,client :<Client(Thread-49, started 131725212501568)>,client status: True 2024-06-17 15:45:28
+[INFO] client id :96.37.26.100:51413,client :<Client(Thread-54, started 131726261065280)>,client status: True 2024-06-17 15:45:28
+[INFO] client id :176.147.175.149:41256,client :<Client(Thread-55, started 131726286243392)>,client status: True 2024-06-17 15:45:28
+[INFO] client id :184.75.223.235:16310,client :<Client(Thread-62, started 131725724194368)>,client status: True 2024-06-17 15:45:28
+[DEBUG] start clients filtering 2024-06-17 15:45:43
+[INFO] client id :218.225.156.222:59153,client :<Client(Thread-45, started 131724138759744)>,client status: True 2024-06-17 15:45:43
+[INFO] client id :82.65.112.214:10995,client :<Client(Thread-46, started 131725766157888)>,client status: True 2024-06-17 15:45:43
+[INFO] client id :169.150.254.167:52182,client :<Client(Thread-49, started 131725212501568)>,client status: True 2024-06-17 15:45:43
+[INFO] client id :176.147.175.149:41256,client :<Client(Thread-55, started 131726286243392)>,client status: True 2024-06-17 15:45:43
+[INFO] client id :184.75.223.235:16310,client :<Client(Thread-62, started 131725724194368)>,client status: True 2024-06-17 15:45:43
