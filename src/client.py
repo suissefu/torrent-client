@@ -164,7 +164,7 @@ class Client(threading.Thread):
 
     def attempt_download_piece(self,piece:Piece):
         if verbose==1:
-            self.logger.debug(f'from {self.peer.ip}:{self.peer.port},start attempt download Piece #{piece.index}')
+            self.logger.debug(f'from {self.peer.ip}:{self.peer.port},start attempt to download Piece #{piece.index}')
         self.piece=piece
         if time.time()-self.last_message_time >30:
             try:
