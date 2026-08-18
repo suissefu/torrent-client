@@ -38,26 +38,6 @@ change_verbose_to=None
 view_bitfield = False
 
 
-
-#下载结束会保存上一次下载进度，该函数通过csv文件读取哪些piece已经被下载
-#after the download ends,the download progress will be recorded,the function will tell which pieces have
-# been downloaded by reading csv file
-# def load_previous_data(file:TorrentFile)->list:
-#     if os.path.exists(f'../download/{file.name}') and os.path.exists(f'../cache/{file.name}.csv'):
-#         with open(f'../cache/{file.name}.csv','r') as f:
-#             reader=csv.DictReader(f)
-#             column_values=[row['downloaded piece number'] for row in reader]
-#         data=list(collections.Counter([int(i) for i in column_values]).keys())
-#     else :
-#         data=[]
-#     return data
-
-# def init_bitfield(file:TorrentFile, index_lists:list) -> None:
-#     bitfield_byte_length=len(file.piece_hashes)//8 if len(file.piece_hashes)%8 ==0 else len(file.piece_hashes)//8+1
-#     file.bitfield=BitField(bytearray(bitfield_byte_length))
-#     for index in index_lists :
-#         file.bitfield.set_piece(index)
-
 #这是入口函数，指定种子文件名下载
 #this is entrance function, specify torrent file name to start downloading 
 async def download(torrent_filename:str):
@@ -109,92 +89,7 @@ async def download(torrent_filename:str):
 
     while True: 
         await asyncio.sleep(1)
-    # while True:
-    #     active_peers = peer_pool.get_all(PeerState.ACTIVE)
-    #     queued_peers = peer_pool.get_all(PeerState.QUEUED)
-    #     failed_peers = peer_pool.get_all(PeerState.FAILED)
-    #     banned_peers = peer_pool.get_all(PeerState.BANNED)
 
-    #     # print("\n\n")
-    #     # print(f"Active peers count: {len(active_peers)}")
-    #     # print(f"Queued peers count: {len(queued_peers)}")
-    #     # print(f"Failed peers count: {len(failed_peers)}")
-    #     # print(f"Banned peers count: {len(banned_peers)}")
-    #     # print("Active peers:")
-    #     # print([f"{peer.ip}:{peer.port}" for peer in peer_pool.get_all(PeerState.ACTIVE)])
-
-    #     # print("Queued peers:")
-    #     # print([f"{peer.ip}:{peer.port}" for peer in peer_pool.get_all(PeerState.QUEUED)])
-    #     # print("Failed peers:")
-    #     # print([f"{peer.ip}:{peer.port}" for peer in peer_pool.get_all(PeerState.FAILED)])
-    #     # print(f"interval: {app.interval}")
-    #     # print(f"Update time: {datetime.now()}\n\n")
-    #     await asyncio.sleep(10)  # 每 10 秒更新一次
-
-    # peer_manager_task.cancel()
-    # leech_task.cancel()
-
-    # try:
-    #     await peer_manager_task
-    #     await leech_task
-    # except asyncio.CancelledError:
-    #     pass
-    # peer_manager_task.cancel()
-
-    # activate a specific number of peers
-    ########################################################################################
-    # sys.exit(0)
-    # # file.log_torrent_file()
-
-    # print(f'Starting download for {file.name}...')
-
-    # # previous_downloaded_piece_indexs=load_previous_data(file)
-    # # file.previous_done_pieces=len(previous_downloaded_piece_indexs)
-    # # init_bitfield(file, previous_downloaded_piece_indexs)
-
-    # # length=file.calculate_piece_size(0)
-    # # for index, hash in enumerate(file.piece_hashes):
-    # #     if not index in previous_downloaded_piece_indexs:
-    # #         length=file.calculate_piece_size(index)
-    # #         work_queue.put(Piece(index,hash,length))
-    
-    # #启动 Client Manager        
-    # # start Client Manager
-    # client_manager=ClientManager(file)
-    # client_manager.start()
-    # print('Searching peers...')
-
-    # #创建下载文件(如 example.mp4), 获取 results 队列中下载完成的piece,写入文件中
-    # #create the target file(for example, create example.mp4), get pieces from result queue 
-    # # and write those pieces into the file 
-
-    # if not os.path.exists(f'../download/{file.name}'):
-    #     with open(f'../download/{file.name}','w'):
-    #         pass
-    # with open(f'../download/{file.name}','rb+') as f:
-    #     logger=Log(file,'download')
-    #     while file.this_time_done_pieces < len(file.piece_hashes)-file.previous_done_pieces:
-    #         piece = results.get()
-    #         for i, client in enumerate(client_manager.clients):
-    #             try:
-    #                 client['client'].send_have(piece.index)
-    #             except Exception as e:
-    #                 logger.warn('when sending have message :',e,',traceback line ',e.__traceback__.tb_lineno,',module ',e.__class__.__module__)
-    #         begin, end=file.calculate_bounds_for_piece(piece.index)
-    #         f.seek(begin)
-    #         f.write(piece.data)
-    #         file.this_time_done_pieces+=1
-    #         file.change_torrent_file_for_adding_piece_number()
-    #         file.log_downloaded_piece(piece)
-    #         percent=(file.this_time_done_pieces+file.previous_done_pieces)/len(file.piece_hashes)*100
-    #         print(f'{percent:.2f}% downloaded piece #{piece.index} downloaded from {piece.downloaded_by_client} client number: {len(client_manager.clients)} time elapsed: {time.strftime("%H:%M:%S",time.gmtime(int(time.time()-client_manager.start_time)))} ')
-    #         logger.debug('work queue status: ',work_queue.qsize())
-
-    # # 下载完成
-    # # download completed
-    # print(f'{file.name} download completed')
-    # os.execl(sys.executable,sys.executable,'main.py','-e')
-    #########################################################################################
 
 def handling_cmd_argument():
 
