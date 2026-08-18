@@ -5,7 +5,7 @@ import os
 import struct
 import time
 # below is custom module
-import Peers
+import peer as Peer
 import bitfield
 from piece import Piece
 from config import config
@@ -83,11 +83,11 @@ class Message():
                 return self.length.to_bytes(4,byteorder='big')
 
 class Client(threading.Thread):
-    def __init__(self,peer:Peers.Peer=None,torrent_file=None,peer_id:bytes=b'') -> None:
+    def __init__(self,peer:Peer.Peer=None,torrent_file=None,peer_id:bytes=b'') -> None:
         super().__init__()
         self.conn=None
         self.choked:bool=True
-        self.peer:Peers.Peer=peer
+        self.peer:Peer.Peer=peer
         self.info_hash:bytes=torrent_file.info_hash if torrent_file!=None else None
         self.torrent_file=torrent_file
         self.peer_id:bytes=peer_id
@@ -128,7 +128,7 @@ class Client(threading.Thread):
             self.logger.error(f'when testing the peer\'s availability ,an error "{e}" occurred,traceback line {e.__traceback__.tb_lineno}')
             return False
 
-        while self.torrent_file.this_time_done_pieces< len(self.torrent_file.piece_hashes)-self.torrent_file.previous_done_pieces:
+        while self.torrent_file.this_time_done_pieces < len(self.torrent_file.piece_hashes)-self.torrent_file.previous_done_pieces:
             piece = work_queue.get()
             if self.peer_bitfield.has_piece(piece.index)!=1:
                 work_queue.put(piece)

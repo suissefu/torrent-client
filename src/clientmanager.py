@@ -10,7 +10,8 @@ import asyncio
 from urllib.parse import urlencode
 # below is custom module
 import bencode
-import Peers
+import peer as Peer
+# from peer import Peer
 from torrentfile import TorrentFile
 from client import work_queue,Client
 from log import Log
@@ -105,7 +106,7 @@ class ClientManager(Thread):
                 with open(f'../temp/{self.torrent_file.name}.tmp','rb') as f:
                     try:
                         peers_info=bencode.unmarshal(f)  
-                        peers=Peers.unmarshal(peers_info['peers'])
+                        peers=Peer.unmarshal(peers_info['peers'])
                     except:
                         tracker=self.trackers.pop(0)
                         self.trackers.append(tracker)
@@ -156,10 +157,28 @@ class ClientManager(Thread):
         except Exception as e:
             response=requests.models.Response()
             self.logger.error(f'when requesting peers :{e},traceback line {e.__traceback__.tb_lineno}')
-        finally:
+       
 
-            self.logger.debug(tracker_url)
-            return response
+        self.logger.debug(tracker_url)
+        return response
+
+
+class PeerManager:
+    def __init__(self,torrent_file:TorrentFile):
+        super().__init__()
+        self.torrent_file=torrent_file
+        #-qB4640-CS6EHUGcZu!f
+        self.peer_id=('-TR4050-'+generate_random_string(12)).encode('utf-8')
+        self.port=generate_random_port()
+        #print('port %d is ready to request the tracker for peers'%self.port)
+        self.trackers=self.torrent_file.announce_list \
+        if self.torrent_file.announce_list !=None else [self.torrent_file.announce]
+        self.peers=[]
+        self.black_peers=[]
+        self.last_success_request_time=time.time()
+        self.interval=0
+        self.start_time=time.time()
+        self.logger=Log(self.torrent_file,'ClientManager')
         
 
 def generate_random_string(num:int):

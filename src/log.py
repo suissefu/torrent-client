@@ -3,7 +3,6 @@ import time
 from  threading import Thread
 from traceback import print_exc
 
-
 class Log():
     def __init__(self,torrent_file,name:str) -> None:
         '''

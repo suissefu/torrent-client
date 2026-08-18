@@ -4,13 +4,26 @@ try:
     import os
     import csv
     import collections
-    #below is custom module
+    # below is custom module
     from torrentfile import TorrentFile
-    from clientmanager import ClientManager
-    from client import work_queue,results
-    from bitfield import BitField
+    # from clientmanager import ClientManager
+    # from client import work_queue, results
+    from bitfield import Bitfield
     from piece import Piece
     from log import Log
+    from storage_manager import StorageManager
+    import bencode
+    from tracker import *
+    from peer import *
+    from app import App, app
+    from peer_manager import PeerManager
+    from datetime import datetime
+    from downloader import Leecher 
+    import asyncio
+    from dashboard import dashboard_loop
+
+
+
 except KeyboardInterrupt as e:
     print('\noperation stopped by user')
     os.execl(sys.executable,sys.executable,'main.py','-e')
@@ -22,89 +35,166 @@ clean=False
 help=False
 exit=False
 change_verbose_to=None
+view_bitfield = False
 
-#默认情况下 只有src目录，该函数用于初始化工作目录
-#by default, only src directory exists,this function is usedt to init work directories
-def init_work_directories():
-    directories=['torrent','download','cache','temp','log']
-    for directory in directories:
-        if not os.path.exists(f'../{directory}'):
-            os.makedirs(f'../{directory}')
+
 
 #下载结束会保存上一次下载进度，该函数通过csv文件读取哪些piece已经被下载
 #after the download ends,the download progress will be recorded,the function will tell which pieces have
 # been downloaded by reading csv file
-def load_previous_data(file:TorrentFile)->list:
-    if os.path.exists(f'../download/{file.name}') and os.path.exists(f'../cache/{file.name}.csv'):
-        with open(f'../cache/{file.name}.csv','r') as f:
-            reader=csv.DictReader(f)
-            column_values=[row['downloaded piece number'] for row in reader]
-        data=list(collections.Counter([int(i) for i in column_values]).keys())
-    else :
-        data=[]
-    return data
+# def load_previous_data(file:TorrentFile)->list:
+#     if os.path.exists(f'../download/{file.name}') and os.path.exists(f'../cache/{file.name}.csv'):
+#         with open(f'../cache/{file.name}.csv','r') as f:
+#             reader=csv.DictReader(f)
+#             column_values=[row['downloaded piece number'] for row in reader]
+#         data=list(collections.Counter([int(i) for i in column_values]).keys())
+#     else :
+#         data=[]
+#     return data
 
-def init_bitfield(file:TorrentFile,index_lists:list):
-    bitfield_byte_length=len(file.piece_hashes)//8 if len(file.piece_hashes)%8 ==0 else len(file.piece_hashes)//8+1
-    file.bitfield=BitField(bytearray(bitfield_byte_length))
-    for index in index_lists :
-        file.bitfield.set_piece(index)
+# def init_bitfield(file:TorrentFile, index_lists:list) -> None:
+#     bitfield_byte_length=len(file.piece_hashes)//8 if len(file.piece_hashes)%8 ==0 else len(file.piece_hashes)//8+1
+#     file.bitfield=BitField(bytearray(bitfield_byte_length))
+#     for index in index_lists :
+#         file.bitfield.set_piece(index)
 
 #这是入口函数，指定种子文件名下载
 #this is entrance function, specify torrent file name to start downloading 
-def download(torrent_filename:str):
+async def download(torrent_filename:str):
+    loop = asyncio.get_running_loop()
+    loop.slow_callback_durtion = 0.01
+    print("Start parsing ...")
     file=TorrentFile()
-    file.open_torrent_file(torrent_filename)
-    file.log_torrent_file()
+    file.parse(torrent_filename)
+    app.torrent_file = file
 
-    print(f'Starting download for {file.name}...')
+    pieces_number = len(file.info["pieces"]) // 20 # hash_len 20 bytes
+    bitfield = Bitfield(pieces_number)
+    app.bitfield = bitfield
+    if StorageManager.bitfield_path().exists():
+        with StorageManager.bitfield_path().open("rb") as f:
+            chunck = f.read()
+        app.bitfield[:] = chunck
+    else:
+        with StorageManager.bitfield_path().open("wb") as f:
+            f.write(app.bitfield)
 
-    previous_downloaded_piece_indexs=load_previous_data(file)
-    file.previous_done_pieces=len(previous_downloaded_piece_indexs)
-    init_bitfield(file,previous_downloaded_piece_indexs)
 
-    length=file.calculate_piece_size(0)
-    for index,hash in enumerate(file.piece_hashes):
-        if not index in previous_downloaded_piece_indexs:
-            length=file.calculate_piece_size(index)
-            work_queue.put(Piece(index,hash,length))
+    # for i in range(pieces_number):
+    #     work_queue.put(Piece(i))
+
+    # validation = work_queue.get()
+    # print(validation.__dict__) 
+
+    peer_pool = PeerPool()
+    app.peer_pool = peer_pool
+    # peer_list = peer_discovery(get_trackers(file))
+    # for peer in peer_list:
+    #     peer_pool.put(peer)
+    # print([f"{peer.ip}:{peer.port}" for peer in peer_pool.get_all(PeerState.QUEUED)])
+    peer_manager = PeerManager(10, peer_pool=peer_pool)
+    peer_manager_task = asyncio.create_task(peer_manager.start())
+    leecher = Leecher()
+    leech_task = asyncio.create_task(leecher.leech())
+    display_task = asyncio.create_task(dashboard_loop())
+    done, pending = await asyncio.wait(
+       [peer_manager_task, leech_task],
+        return_when = asyncio.FIRST_COMPLETED
+    )
+    for task in pending:
+        task.cancel()
+    await asyncio.gather(*pending, return_exceptions = True)
+    for task in done:
+        task.result()
+
+    while True: 
+        await asyncio.sleep(1)
+    # while True:
+    #     active_peers = peer_pool.get_all(PeerState.ACTIVE)
+    #     queued_peers = peer_pool.get_all(PeerState.QUEUED)
+    #     failed_peers = peer_pool.get_all(PeerState.FAILED)
+    #     banned_peers = peer_pool.get_all(PeerState.BANNED)
+
+    #     # print("\n\n")
+    #     # print(f"Active peers count: {len(active_peers)}")
+    #     # print(f"Queued peers count: {len(queued_peers)}")
+    #     # print(f"Failed peers count: {len(failed_peers)}")
+    #     # print(f"Banned peers count: {len(banned_peers)}")
+    #     # print("Active peers:")
+    #     # print([f"{peer.ip}:{peer.port}" for peer in peer_pool.get_all(PeerState.ACTIVE)])
+
+    #     # print("Queued peers:")
+    #     # print([f"{peer.ip}:{peer.port}" for peer in peer_pool.get_all(PeerState.QUEUED)])
+    #     # print("Failed peers:")
+    #     # print([f"{peer.ip}:{peer.port}" for peer in peer_pool.get_all(PeerState.FAILED)])
+    #     # print(f"interval: {app.interval}")
+    #     # print(f"Update time: {datetime.now()}\n\n")
+    #     await asyncio.sleep(10)  # 每 10 秒更新一次
+
+    # peer_manager_task.cancel()
+    # leech_task.cancel()
+
+    # try:
+    #     await peer_manager_task
+    #     await leech_task
+    # except asyncio.CancelledError:
+    #     pass
+    # peer_manager_task.cancel()
+
+    # activate a specific number of peers
+    ########################################################################################
+    # sys.exit(0)
+    # # file.log_torrent_file()
+
+    # print(f'Starting download for {file.name}...')
+
+    # # previous_downloaded_piece_indexs=load_previous_data(file)
+    # # file.previous_done_pieces=len(previous_downloaded_piece_indexs)
+    # # init_bitfield(file, previous_downloaded_piece_indexs)
+
+    # # length=file.calculate_piece_size(0)
+    # # for index, hash in enumerate(file.piece_hashes):
+    # #     if not index in previous_downloaded_piece_indexs:
+    # #         length=file.calculate_piece_size(index)
+    # #         work_queue.put(Piece(index,hash,length))
     
-    #启动 Client Manager        
-    # start Client Manager
-    client_manager=ClientManager(file)
-    client_manager.start()
-    print('Searching peers...')
+    # #启动 Client Manager        
+    # # start Client Manager
+    # client_manager=ClientManager(file)
+    # client_manager.start()
+    # print('Searching peers...')
 
-    #创建下载文件(如 example.mp4),获取 results 队列中下载完成的piece,写入文件中
-    #create the target file(for example, create example.mp4),get pieces from result queue 
-    # and write those pieces into the file 
+    # #创建下载文件(如 example.mp4), 获取 results 队列中下载完成的piece,写入文件中
+    # #create the target file(for example, create example.mp4), get pieces from result queue 
+    # # and write those pieces into the file 
 
-    if not os.path.exists(f'../download/{file.name}'):
-        with open(f'../download/{file.name}','w'):
-            pass
-    with open(f'../download/{file.name}','rb+') as f:
-        logger=Log(file,'download')
-        while file.this_time_done_pieces< len(file.piece_hashes)-file.previous_done_pieces:
-            piece = results.get()
-            for i,client in enumerate(client_manager.clients):
-                try:
-                    client['client'].send_have(piece.index)
-                except Exception as e:
-                    logger.warn('when sending have message :',e,',traceback line ',e.__traceback__.tb_lineno,',module ',e.__class__.__module__)
-            begin,end=file.calculate_bounds_for_piece(piece.index)
-            f.seek(begin)
-            f.write(piece.data)
-            file.this_time_done_pieces+=1
-            file.change_torrent_file_for_adding_piece_number()
-            file.log_downloaded_piece(piece)
-            percent=(file.this_time_done_pieces+file.previous_done_pieces)/len(file.piece_hashes)*100
-            print(f'{percent:.2f}% downloaded piece #{piece.index} downloaded from {piece.downloaded_by_client} client number: {len(client_manager.clients)} time elapsed: {time.strftime("%H:%M:%S",time.gmtime(int(time.time()-client_manager.start_time)))} ')
-            logger.debug('work queue status: ',work_queue.qsize())
+    # if not os.path.exists(f'../download/{file.name}'):
+    #     with open(f'../download/{file.name}','w'):
+    #         pass
+    # with open(f'../download/{file.name}','rb+') as f:
+    #     logger=Log(file,'download')
+    #     while file.this_time_done_pieces < len(file.piece_hashes)-file.previous_done_pieces:
+    #         piece = results.get()
+    #         for i, client in enumerate(client_manager.clients):
+    #             try:
+    #                 client['client'].send_have(piece.index)
+    #             except Exception as e:
+    #                 logger.warn('when sending have message :',e,',traceback line ',e.__traceback__.tb_lineno,',module ',e.__class__.__module__)
+    #         begin, end=file.calculate_bounds_for_piece(piece.index)
+    #         f.seek(begin)
+    #         f.write(piece.data)
+    #         file.this_time_done_pieces+=1
+    #         file.change_torrent_file_for_adding_piece_number()
+    #         file.log_downloaded_piece(piece)
+    #         percent=(file.this_time_done_pieces+file.previous_done_pieces)/len(file.piece_hashes)*100
+    #         print(f'{percent:.2f}% downloaded piece #{piece.index} downloaded from {piece.downloaded_by_client} client number: {len(client_manager.clients)} time elapsed: {time.strftime("%H:%M:%S",time.gmtime(int(time.time()-client_manager.start_time)))} ')
+    #         logger.debug('work queue status: ',work_queue.qsize())
 
-    # 下载完成
-    # download completed
-    print(f'{file.name} download completed')
-    os.execl(sys.executable,sys.executable,'main.py','-e')
+    # # 下载完成
+    # # download completed
+    # print(f'{file.name} download completed')
+    # os.execl(sys.executable,sys.executable,'main.py','-e')
+    #########################################################################################
 
 def handling_cmd_argument():
 
@@ -113,6 +203,7 @@ def handling_cmd_argument():
     global change_verbose_to
     global torrent_file_name
     global exit
+    global view_bitfield
 
     # 没给参数情况下
     if len(sys.argv)==1:
@@ -142,6 +233,11 @@ def handling_cmd_argument():
             if i !=len(sys.argv)-1:
                 torrent_file_name=sys.argv[i+1]
 
+        elif param_name == "-b" or param_name == "--bitfield":
+            view_bitfield = True
+            if i !=len(sys.argv)-1:
+                torrent_file_name = sys.argv[i+1]            
+
 
         else:
             continue
@@ -151,7 +247,7 @@ def handling_cmd_argument():
 if __name__=='__main__':
 
     try:
-        init_work_directories()
+        StorageManager.init_work_directories()
         handling_cmd_argument()
 
         if help:
@@ -160,7 +256,7 @@ if __name__=='__main__':
             print('-h   :print this help message (also --help)')
             print('-c   :clean all files in cache,temp,log directory (also --clean)')
             print('-v   :specify the level of details shown in procedures (also --verbose)')
-            print('      by default use -v 0 ,which means there will be no log files generated')
+            print('      by default use -v 0, which means there will be no log files generated')
             print('      in the /log directory')
             print('      the optional range from 0 to 1')
             print('-f   :give the torrent file name that you want to download (also --file)')
@@ -189,7 +285,20 @@ if __name__=='__main__':
                     f.write(f'[{key}] {str(value)}\n')
             if torrent_file_name:
                 os.execl(sys.executable,sys.executable,'main.py','-f',torrent_file_name)
+        elif view_bitfield:
+            file=TorrentFile()
+            file.parse(f'../torrent/{torrent_file_name}')
+            app.torrent_file = file
 
+            pieces_number = len(app.torrent_file.info["pieces"]) // 20 # hash_len 20 bytes
+            bitfield = Bitfield(pieces_number)
+            try:
+                with StorageManager.bitfield_path().open("rb") as f:
+                    bitfield[:] = f.read()
+                print(f"bitfield bit number: {len(bitfield)}")
+                print(f"bitfield index possesed: \n{bitfield.get_all(0)}")
+            except:
+                pass
         else :
 
             if torrent_file_name==None:
@@ -203,14 +312,15 @@ if __name__=='__main__':
                 sys.exit(0)
             try:
                 
-                download(f'../torrent/{torrent_file_name}')
+                asyncio.run(download(f'../torrent/{torrent_file_name}'), debug = True)
             except KeyboardInterrupt as e:
-                print('\noperation stopped by user')
-                os.execl(sys.executable,sys.executable,'main.py','-e')
-            except Exception as e:
-                print('when starting download :',e,',traceback line ',e.__traceback__.tb_lineno,',module ',e.__class__.__module__)
-                os.execl(sys.executable,sys.executable,'main.py','-e')
+                # print('\noperation stopped by user')
+                # os.execl(sys.executable,sys.executable,'main.py','-e')
+                raise
+            # except Exception as e:
+            #     print('when starting download :',e,',traceback line ',e.__traceback__.tb_lineno,',module ',e.__class__.__module__)
+            #     os.execl(sys.executable,sys.executable,'main.py','-e')
     except KeyboardInterrupt as e:
         print('\noperation stopped by user')
-        os.execl(sys.executable,sys.executable,'main.py','-e')
+        # os.execl(sys.executable,sys.executable,'main.py','-e')
 
